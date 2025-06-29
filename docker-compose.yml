@@ -1,0 +1,34 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    ports:
+      # Maps the host port (PUBLIC_PORT) to the container port (FLASK_RUN_PORT)
+      - "${PUBLIC_PORT}:${FLASK_RUN_PORT}"
+    env_file:
+      - .env
+    environment:
+      # 🔁 IMPORTANT: This overrides DB_HOST from the .env file
+      # so the app container connects to the 'db' service container.
+      DB_HOST: db
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:15
+    restart: always
+    # Environment variables are taken from the .env file
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./initdb:/docker-entrypoint-initdb.d
+    ports:
+      # Maps host port 5433 to the postgres container port 5432
+      # Your local app will connect to the DB on localhost:5433
+      - "5433:5432"
+
+volumes:
+  pgdata:
