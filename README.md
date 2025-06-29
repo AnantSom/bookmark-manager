@@ -76,23 +76,17 @@ You can run the full application stack using a single command.
 
 If you wish to run the Flask application locally for easier debugging but still use the containerized database:
 
-1.  **Start only the database service:**
-    ```bash
-    docker-compose up -d db
-    ```
-    This will start the PostgreSQL container in the background and make it available on your local machine at `localhost:5433`.
-
-2.  **Set up a local Python environment:**
+1.  **Set up a local Python environment:**
     ```bash
     # Create and activate a virtual environment
-    python3 -m venv venv
+    python -m venv venv
     source venv/bin/activate
 
     # Install dependencies
     pip install -r requirements.txt
     ```
 
-3.  **Run the Flask application:**
+2.  **Run the Flask application:**
     ```bash
     python app.py
     ```
