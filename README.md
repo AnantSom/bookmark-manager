@@ -1,4 +1,4 @@
-# Website Manager - Full Stack Flask & PostgreSQL Application
+# Bookmark Manager
 
 This is a full-stack, containerized web application that allows users to sign up, log in, and manage a personal list of websites. The application is built with Flask for the backend, PostgreSQL for the database, and is orchestrated entirely with Docker Compose for easy setup and deployment.
 
@@ -29,7 +29,7 @@ The application and database are configured using a single `.env` file.
 
 1.  Clone the repository:
     ```bash
-    git clone https://github.com/AnantSom/Website-Manager.git
+    git clone https://github.com/AnantSom/bookmark-manager.git
     cd website-manager
     ```
 
@@ -80,7 +80,7 @@ If you wish to run the Flask application locally for easier debugging but still 
     ```bash
     # Create and activate a virtual environment
     python -m venv venv
-    source venv/bin/activate
+    .\venv\Scripts\activate
 
     # Install dependencies
     pip install -r requirements.txt
